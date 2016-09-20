@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
 import com.henry.database.Db;
+import com.henry.po.EasyuiDataGridResult;
 import com.henry.po.User;
 
 /**
@@ -33,8 +34,13 @@ public class GetUsers extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		List<User> list = Db.getUsers();
-		 
-		 String json = JSON.toJSONString(list);
+		EasyuiDataGridResult result = new EasyuiDataGridResult();
+		result.setTotal(list.size());
+		
+		result.setRows(list);
+		
+		
+		 String json = JSON.toJSONString(result);
 		 
 		 response.getWriter().write(json);
 		
