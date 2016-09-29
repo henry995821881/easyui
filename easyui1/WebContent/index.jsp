@@ -13,6 +13,7 @@
 	<a href="panel.jsp">panel</a>
 	<a href="layout.jsp">layout</a>
 	<a href="JfeTs0213.jsp">datagrid-complicate</a>
+	<a href="according.jsp">according</a>
 	
 </body>
 </html>
