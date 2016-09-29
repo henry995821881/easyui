@@ -14,6 +14,8 @@ import javax.xml.crypto.Data;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONStreamAware;
+import com.alibaba.fastjson.asm.Type;
+import com.henry.po.Cart;
 import com.henry.po.Product;
 import com.sun.xml.internal.bind.v2.model.core.ID;
 
@@ -53,9 +55,9 @@ public class ShopCart extends HttpServlet {
 		String data = sb.toString();
 
 	
-		List<Product> list = JSON.parseArray(data, Product.class);
+		Cart cart =  JSON.parseObject(data, Cart.class);
 		
-		System.out.println(list);
+		System.out.println(cart.getTotal()+"-->"+cart.getRows());
 
 	}
 

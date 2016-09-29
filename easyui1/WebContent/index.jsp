@@ -10,5 +10,9 @@
 	<a href="crud2.jsp">crud2</a>
 	<a href="crud3.jsp">crud3</a>
 	<a href="shoppingCart.jsp">shoppingcart</a>
+	<a href="panel.jsp">panel</a>
+	<a href="layout.jsp">layout</a>
+	<a href="JfeTs0213.jsp">datagrid-complicate</a>
+	
 </body>
 </html>

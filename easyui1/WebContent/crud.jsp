@@ -37,27 +37,34 @@
 <script type="text/javascript" src="http://www.jeasyui.net/Public/js/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript">
 	var url;
+	//get url for adding
 	function newUser() {
 		$('#dlg').dialog('open').dialog('setTitle', 'New User');
+		//clear form
 		$('#fm').form('clear');
 		url = 'AddUser';
 		
 		
 	}
+	
+	//get url for editting
 	function editUser() {
 		var row = $('#dg').datagrid('getSelected');
 		if (row) {
 			$('#dlg').dialog('open').dialog('setTitle', 'Edit User');
+			//put data of row  into input of form 
 			$('#fm').form('load', row);
 			url = 'UpdateUser?id=' + row.id;
 		}
 	}
+	
 	function saveUser() {
 		
 		
 		$('#fm').form('submit', {
 			url : url,
 			onSubmit : function() {
+				
 				return $(this).form('validate');
 			},
 			success : function(result) {

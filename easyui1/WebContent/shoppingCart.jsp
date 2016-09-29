@@ -71,6 +71,8 @@
 			$('#cartcontent').datagrid({
 				singleSelect:true
 			});
+			
+			
 			$('.item').draggable({
 				revert:true,
 				proxy:'clone',
@@ -82,6 +84,9 @@
 					$(this).draggable('options').cursor='move';
 				}
 			});
+			
+			
+			
 			$('.cart').droppable({
 				onDragEnter:function(e,source){
 					$(source).draggable('options').cursor='auto';
@@ -192,7 +197,7 @@
 		</div>
 		<p class="total">Total: $0</p>
 		<h2>Drop here to add to cart</h2>
-		<button type="button" onclick="submitCart();">提交订单</button>
+		<button type="button" onclick="submitCart();">post order</button>
 	</div>
 	
 	<script type="text/javascript">
@@ -205,15 +210,16 @@
 			        type: "POST",
 			        url: "ShopCart",
 			        contentType: "application/json; charset=utf-8",
-			        data: JSON.stringify(data.rows),
+			        //json object -->json string
+			        data: JSON.stringify(data),
 			        dataType: "json",
 			        success: function (message) {
 			        
-			                alert("请求已提交！我们会尽快与您取得联系");
+			                alert("already submit");
 			           
 			        },
 			        error: function (message) {
-			        	 alert("提交数据失败！");
+			        	 alert("error");
 			            
 			        }
 			    });
