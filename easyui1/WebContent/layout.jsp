@@ -16,12 +16,15 @@
 
 <body>
 
-	<div class="easyui-layout">
-		<div region="west" class="easyui-window" title="westtitle" style="width: 300px; height: 400px;" iconCls="icon-add">west</div>
-		<div region="center" class="easyui-panel" title="centertitle" style="width: 500px; height: 400px;">center</div>
+	
 
-	</div>
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 	<div class="easyui-tabs" style="height: 100px; width: 350px;">
 
 		<div id="first" iconCls="icon-add" closable=true>first</div>
