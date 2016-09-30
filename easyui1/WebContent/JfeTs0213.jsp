@@ -65,8 +65,7 @@
 			var tblCel2L = 'border-collapse: collapse;   border: 1px #ABABAB solid;padding: 0px; word-break: break-all; background-color: #FFFFEE; color: #333333; text-align: left; height: 22px';
 
 			$(function() {
-				$("#dg")
-						.datagrid(
+				$("#dg").datagrid(
 								{
 									data : d,
 									columns : [ [
@@ -78,7 +77,8 @@
 												styler : function(value, row,
 														index) {
 													return tblCel2L;
-												}
+												},
+
 											},
 											{
 												field : 'kikanNm',
@@ -86,12 +86,13 @@
 												width : 240
 											},
 											{
-												field : 'kensinkikanCd',
-												title : 'kensinkikanCd',
+												field : 'kikanCd',
+												title : 'kikanCd',
 												hidden : true,
-												formatter :function(value,row,index){
-													
-													return '<input type="hidden" name="kensinkikanCd",value='+value+'>';
+												formatter : function(value,
+														row, index) {
+
+													return '<input type="hidden" name="kikanCd",value='+value+'>';
 												}
 
 											},
@@ -156,6 +157,122 @@
 								});
 
 			});
+
+			
+			function checkAitesakiCd(value){
+				
+				if(value ==null) return false;
+				
+				value = $.trim(value);
+				var reg =/^[0-9a-zA-Z]+$/g;
+				
+				if(!reg.test(value)){
+					return false;
+				}
+				
+				return true;
+				
+			}
+			function setMaitesaki(index, type) {
+
+				var $kikanCd = $("[name='kikanCd']").eq(index);
+				var $aitesakiCd = $("[name='aitesakiCd']").eq(index);
+				
+				switch (type) {
+
+				case 'add':
+					
+					if(!checkAitesakiCd($aitesakiCd.val())){
+						alert("input char error");
+						return;
+					}
+					
+					add($kikanCd, $aitesakiCd);
+					
+					
+					break;
+				case 'update':
+					
+					if(!checkAitesakiCd($aitesakiCd.val())){
+						alert("input char error");
+						return;
+					}
+					
+					
+					 update($kikanCd, $aitesakiCd);
+					break;
+				case 'del':
+					
+					del($kikanCd, $aitesakiCd);
+					
+					break;
+				default:
+					break;
+
+				}
+			}
+			
+			
+			function add($kikanCd, $aitesakiCd){
+				
+				if(confrim("add ??"))
+				{
+					
+					
+					//
+					for(row in d)
+					{
+						if(row.kikanCd ==$kikanCd.val())
+						{
+							
+							row.aitesakiCd =$aitesakiCd.val();
+							row.kensinkikanCd = $kikanCd.val();
+							break;
+						}
+						
+					}
+					
+					
+					$("#dg").datagrid("reload");
+				}
+				
+			}
+			function update($kikanCd, $aitesakiCd){
+				if(confirm("update ??"))
+				{
+					
+					for(row in d){
+						
+						if(row.kikanCd ==$kikanCd.val()){
+							
+							row.aitesakiCd =$aitesakiCd.val();
+							break;
+						}
+					}
+					
+					
+					$("#dg").datagrid("reload");
+				}
+				
+				
+			}
+			function del($kikanCd, $aitesakiCd){
+				
+				if(confirm("delete ??")){
+					
+					for(row in d){
+						if(row.kikanCd ==$kikanCd.val()){
+							
+							delete row.kensinkikanCd ;
+							delete row.aitesakiCd ;
+							
+							break;
+						}
+					}
+					
+					$("#dg").datagrid("reload");
+				}
+			}
 		</script>
 
 
