@@ -88,7 +88,12 @@
 											{
 												field : 'kensinkikanCd',
 												title : 'kensinkikanCd',
-												hidden : true
+												hidden : true,
+												formatter :function(value,row,index){
+													
+													return '<input type="hidden" name="kensinkikanCd",value='+value+'>';
+												}
+
 											},
 
 											{
